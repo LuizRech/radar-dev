@@ -9,6 +9,8 @@ li.dev-item header {
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 92%;
+    margin-top: -25px;
 }
 
 li.dev-item header img {
@@ -25,6 +27,15 @@ li.dev-item header .user-info {
     display: block;
     font-size: 16px;
     color: #333;
+}
+.delDev {
+    color: gray ;
+    display: block;
+    margin-left: 93%;
+    cursor: pointer;
+}
+.delDev :hover{
+    color: darkred;
 }
 
 .user-info span {

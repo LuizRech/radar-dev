@@ -1,10 +1,19 @@
 import React from 'react';
+import { FiX } from 'react-icons/fi';
 
 import './styles.css';
 
+import api from '../../services/api';
+
 function DevItem({ dev }){
+  function handleDelDev(github_username){
+    api.delete(`/dev/${github_username}`);
+  }
     return(
         <li className="dev-item">
+          <div className="delDev">
+            <FiX className="delDevItem" onClick={() => handleDelDev(dev.github_username)}/>
+          </div>
         <header>
           <img src={dev.avatar_url} alt={dev.name} />
           <div className="user-info">
