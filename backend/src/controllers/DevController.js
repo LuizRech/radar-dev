@@ -17,7 +17,10 @@ module.exports = {
 
         if(!dev){
     
-            const apiResponse = await axios.get(`http://api.github.com/users/${github_username}`);
+            const apiResponse = await axios.get(`http://api.github.com/users/${github_username}`)
+                .catch(function (error) {
+                    return response.json({message: "Usuário não encontrado no Github. Tente novamente."});
+                });
         
             const { name = login, avatar_url, bio } = apiResponse.data;
             
@@ -37,9 +40,11 @@ module.exports = {
                 location
             });
             
+            return response.json(dev);
+        }else{
+            return response.json({message: "Usuário já cadastrado no sistema."});
         }
-        
-        return response.json(dev);
+
     },
     async destroy(request, response){
         const { github_username } = request.params;

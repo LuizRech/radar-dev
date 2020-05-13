@@ -23,9 +23,13 @@ function App() {
   }, []);
 
   async function handleAddDev(data){
-    const response = await api.post('/devs', data)
-
-    setDevs([...devs, response.data]);
+    const response = await api.post('/devs', data);
+    
+    if(response.data.message){
+      alert(response.data.message);
+    }else{
+      setDevs([...devs, response.data]);
+    }
   }
 
   async function handleDelDevLoad(){
