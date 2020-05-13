@@ -5,9 +5,11 @@ import './styles.css';
 
 import api from '../../services/api';
 
-function DevItem({ dev }){
-  function handleDelDev(github_username){
-    api.delete(`/dev/${github_username}`);
+function DevItem({ dev, onClick }){
+  async function handleDelDev(github_username){
+    await api.delete(`/dev/${github_username}`);
+
+    onClick();
   }
     return(
         <li className="dev-item">

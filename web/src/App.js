@@ -28,8 +28,13 @@ function App() {
     setDevs([...devs, response.data]);
   }
 
-  return (
+  async function handleDelDevLoad(){
+    const response = await api.get('/devs');
 
+    setDevs(response.data.devs);
+  }
+
+  return (
     <div id="app">
       <aside>
         <strong>Cadastre-se</strong>
@@ -39,7 +44,7 @@ function App() {
       <main>
         <ul>
           {devs.map(dev => (
-            <DevItem key={dev._id} dev={dev} />
+            <DevItem key={dev._id} dev={dev} onClick={handleDelDevLoad}/>
           ))}      
         </ul>
       </main>
